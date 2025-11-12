@@ -40,7 +40,7 @@ const contactSchema = new mongoose.Schema({
   favoriteColor: String,
   birthday: String
 }, {
-  // versionKey: false
+  versionKey: false
 });
 
 module.exports = mongoose.model('Contact', contactSchema);
