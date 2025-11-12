@@ -14,16 +14,16 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/contacts', contactsRouter);
 
 app.get('/', (req, res) => {
-  res.send('✅ API is running! Try /contacts or /api-docs');
+  res.send('API is running! Try /contacts or /api-docs');
 });
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('✅ Connected to MongoDB Atlas');
+    console.log('Connected to MongoDB Atlas');
     const PORT = process.env.PORT || 8080;
     app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })
   .catch(err => {
-    console.error('❌ MongoDB connection error:', err.message);
+    console.error('MongoDB connection error:', err.message);
     process.exit(1);
   });
