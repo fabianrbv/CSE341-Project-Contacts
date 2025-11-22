@@ -2,23 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Contact = require('../models/model-contact');
 
-/**
- * @openapi
- * /contacts:
- *   get:
- *     summary: Get all contacts
- *     tags:
- *       - Contacts
- *     responses:
- *       '200':
- *         description: List of all contacts
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Contact'
- */
 // GET all contacts
 router.get('/', async (req, res) => {
   try {
@@ -29,30 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-/**
- * @openapi
- * /contacts/{id}:
- *   get:
- *     summary: Get a contact by ID
- *     tags:
- *       - Contacts
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         schema:
- *           type: string
- *         example: "507f1f77bcf86cd799439011"
- *     responses:
- *       '200':
- *         description: Contact found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Contact'
- *       '404':
- *         description: Contact not found
- */
+
 // GET contact by id
 router.get('/:id', async (req, res) => {
   try {
@@ -64,33 +24,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-/**
- * @openapi
- * /contacts:
- *   post:
- *     summary: Create a new contact
- *     tags:
- *       - Contacts
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Contact'
- *     responses:
- *       '201':
- *         description: Contact created successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: string
- *                   example: "507f1f77bcf86cd799439011"
- *       '400':
- *         description: Missing required fields
- */
 // POST create a new contact - all fields required
 router.post('/', async (req, res) => {
   try {
@@ -110,34 +43,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-/**
- * @openapi
- * /contacts/{id}:
- *   put:
- *     summary: Update a contact
- *     tags:
- *       - Contacts
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         schema:
- *           type: string
- *         example: "507f1f77bcf86cd799439011"
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Contact'
- *     responses:
- *       '204':
- *         description: Contact updated successfully
- *       '400':
- *         description: Missing required fields
- *       '404':
- *         description: Contact not found
- */
 // PUT update a contact by id
 router.put('/:id', async (req, res) => {
   try {
@@ -162,26 +67,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-/**
- * @openapi
- * /contacts/{id}:
- *   delete:
- *     summary: Delete a contact
- *     tags:
- *       - Contacts
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         schema:
- *           type: string
- *         example: "507f1f77bcf86cd799439011"
- *     responses:
- *       '204':
- *         description: Contact deleted successfully
- *       '404':
- *         description: Contact not found
- */
 // DELETE remove a contact by id
 router.delete('/:id', async (req, res) => {
   try {

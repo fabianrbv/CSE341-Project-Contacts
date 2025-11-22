@@ -1,19 +1,7 @@
-const swaggerJsdoc = require('swagger-jsdoc');
+const fs = require('fs');
+const path = require('path');
 
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Contacts API',
-      version: '1.0.0',
-      description: 'API for managing contacts',
-    },
-    servers: [
-      { url: process.env.BASE_URL || 'http://localhost:8080' }
-    ],
-  },
-  apis: ['./routes/*.js', './models/*.js']
-};
+const swaggerFile = path.join(__dirname, 'swagger.json');
+const swaggerData = JSON.parse(fs.readFileSync(swaggerFile, 'utf8'));
 
-const specs = swaggerJsdoc(options);
-module.exports = specs;
+module.exports = swaggerData;
